@@ -45,7 +45,7 @@ public class Base {
 
     public static WebDriver driver;
     static String configPath = "C:\\Users\\Admin\\IdeaProjects\\agricultural_insurance\\src\\testData\\config.xml";
-
+    static String url1;
     //report;
 //    static ExtentReports extent;
 //    static ExtentTest test;
@@ -56,6 +56,8 @@ public class Base {
 //        ExtentSparkReporter htmlReporter = new ExtentSparkReporter("test-output/ExtentReport.html");
 //        extent = new ExtentReports();
 //        extent.attachReporter(htmlReporter);
+
+        url1 = readFromFile("url1" ,configPath);
 
 //        Set up WebDriver
         String browserName = readFromFile("browser" ,configPath);
@@ -84,7 +86,8 @@ public class Base {
         insuranceCheckPage = new InsuranceCheckPage(driver);
         contactUsPage = new ContactUsPage(driver);
 
-        driver.get("https://www.bth.co.il/");
+//        driver.get("https://www.bth.co.il/");
+        driver.get(url1);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 //        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 350);");
