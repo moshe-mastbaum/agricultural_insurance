@@ -1,18 +1,13 @@
 import Pageobject.*;
-//import com.aventstack.extentreports.ExtentReports;
-//import com.aventstack.extentreports.ExtentTest;
-//import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-//import org.junit.jupiter.api.AfterAll;
-//import org.junit.jupiter.api.BeforeAll;
-//import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.*;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -22,7 +17,14 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
+
+import org.testng.asserts.SoftAssert;
 
 public class Base {
 
@@ -41,21 +43,34 @@ public class Base {
     FindDocumentsPage findDocumentsPage;
     InsuranceCheckPage insuranceCheckPage;
     ContactUsPage contactUsPage;
-
+    SoftAssert softAssert;
 
     public static WebDriver driver;
     static String configPath = "C:\\Users\\Admin\\IdeaProjects\\agricultural_insurance\\src\\testData\\config.xml";
     static String url1;
-    //report;
-//    static ExtentReports extent;
-//    static ExtentTest test;
+
+    public static String takeScreenShot() {
+        try {
+            String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
+            String fileName = timeStamp + "_" + System.currentTimeMillis() + ".png";
+            TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+            File screenShotFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
+            Path destinationPath = new File("screenshots/" + fileName).toPath();
+            Files.createDirectories(destinationPath.getParent());
+            Files.copy(screenShotFile.toPath(), destinationPath, StandardCopyOption.REPLACE_EXISTING);
+
+            // Add to allure report
+            Allure.addAttachment("Screenshot - " + timeStamp,
+                    Files.newInputStream(screenShotFile.toPath()));
+            return fileName;
+        } catch (IOException e) {
+            System.out.println("Failed to save screenshot: " + e.getMessage());
+            return null;
+        }
+    }
 
     @BeforeSuite
     public static void setUp() throws ParserConfigurationException, IOException, SAXException {
-//         Initialize Extent Reports
-//        ExtentSparkReporter htmlReporter = new ExtentSparkReporter("test-output/ExtentReport.html");
-//        extent = new ExtentReports();
-//        extent.attachReporter(htmlReporter);
 
         url1 = readFromFile("url1" ,configPath);
 
@@ -86,35 +101,19 @@ public class Base {
         insuranceCheckPage = new InsuranceCheckPage(driver);
         contactUsPage = new ContactUsPage(driver);
 
-//        driver.get("https://www.bth.co.il/");
+        softAssert = new SoftAssert();
+
         driver.get(url1);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-//        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 350);");
-//        Thread.sleep(2000);
-//        driver.findElement(By.cssSelector("#abroadplus ")).click();
-
-//        WebElement pElement = wait.until(
-//                ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#abroadplus "))
-//        );
-//        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", pElement);
-//        Thread.sleep(2000);
-//        driver.findElement(By.cssSelector("#abroadplus ")).click();
-
-
-        //*[@id="abroadplus"]
-//        homePage = new HomePage(driver);
-//        createStudentPage = new Create_student_page(driver);
-//        loginPage = new LoginPage(driver);
-//        driver.get("https://turnitin.com/newuser_type.asp");
     }
 
-//    @AfterAll
-    public static void close (){
-//        driver.quit();
-        // Flush Extent Reports
-//        extent.flush();
+    @AfterMethod
+    public void after_test() {
+        if (driver != null) {
+            takeScreenShot();
+        }
     }
+
 
 //     static String readFromFile(String keyData, String pathName) throws ParserConfigurationException, IOException, SAXException {
     public static String readFromFile(String keyData, String pathName) throws ParserConfigurationException, IOException, SAXException {

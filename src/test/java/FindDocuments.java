@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 public class FindDocuments extends Base {
 
     @Test //TC-58   לא עובד
-    public void test54() throws InterruptedException{
+    public void test58() throws InterruptedException{
         homePage.to_find_documents();
         findDocumentsPage.find_open_text();
     }

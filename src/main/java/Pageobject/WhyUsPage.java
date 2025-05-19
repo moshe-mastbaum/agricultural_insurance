@@ -20,7 +20,7 @@ public class WhyUsPage extends BasePage{
 
     By cookies_btn = By.id("acceptButton");
     By to_continue = By.cssSelector(".sc-papXJ");
-
+    By why_us_text = By.cssSelector("div.line-wrap > div > span");
     //Constructor
     public WhyUsPage(WebDriver driver) {
         super(driver);
@@ -31,6 +31,16 @@ public class WhyUsPage extends BasePage{
         click(to_continue);
         return this;
     }
+
+    public String why_us_text(){
+        return getText(why_us_text);
+    }
+
+    public boolean is_continue_exist(){
+        return checkIfElementExist(to_continue);
+    }
+
+
 
 
 

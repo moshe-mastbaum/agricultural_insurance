@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class BasePage {
         this.driver= driver;
         wait= new WebDriverWait(driver, Duration.ofSeconds(20));
         actions = new Actions(driver);
+
     }
 
     //Functions
@@ -40,7 +42,6 @@ public class BasePage {
         WebElement elementToHover = driver.findElement(elementLocation);
         actions.moveToElement(elementToHover).perform();
     }
-
 
     public String get_url(){
         return driver.getCurrentUrl();
