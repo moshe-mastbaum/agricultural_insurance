@@ -15,56 +15,14 @@ public class ProposalTest extends Base {
     @Test (description = "Verify why us")// TC-38
     @Description("Open why us and verify text is correct")
     public void test38() throws InterruptedException{
-//        SoftAssert softAssert = new SoftAssert();
         homePage.to_purchase();
-//        checkEqualString(() -> whyUsPage.why_us_text(), "למה כדאי אצלי1נו?");
-//        checkBoolean(() -> whyUsPage.is_continue_exist());
-//        Assert.assertEquals(whyUsPage.why_us_text(), "למה כדאי אצלינו?");
-//        Assert.assertTrue(whyUsPage.is_continue_exist());
-
         Allure.step("Assertion 1: Check Why Us text ", () -> {
-            softAssert.assertEquals(whyUsPage.why_us_text(), "למה כדאי אצלינו1?", "Mismatch: ");
-
+            softAssert.assertEquals(whyUsPage.why_us_text(), "למה כדאי אצלינו?", "Mismatch: ");
         });
-
         Allure.step("Assertion 2: Check Continue button exists", () -> {
             softAssert.assertTrue(whyUsPage.is_continue_exist(), "Continue button is not present");
-
         });
-
         softAssert.assertAll();
-        // Soft assertions
-//        @Step("text  Why Us ")
-//        softAssert.assertEquals(whyUsPage.why_us_text(), "למה כדאי אצלינו?", "Mismatch in 'Why Us' text");
-//        softAssert.assertTrue(whyUsPage.is_continue_exist(), "'Continue' element is missing");
-//
-//        // This will collect and throw any failures
-//        softAssert.assertAll();
-
-
-//        verifyWhyUsText3(whyUsPage.why_us_text(), softAssert);
-//        verifyWhyUsText4(whyUsPage.why_us_text(), softAssert);
-        // Step 2: Check continue button exists
-
-//        verifyContinueExists(whyUsPage.is_continue_exist(), softAssert);
-
-        // Final check
-//        softAssert.assertAll();
-
-//        try {
-//            String text1 = whyUsPage.why_us_text();
-//            Assert.assertEquals(text1, "למה כדאי אצלינו?");
-//            System.out.println("header: " + text1);
-//            test.log(Status.PASS, "Test Passed");
-//        }
-//        catch (AssertionError e) {
-//            // Handle AssertionError in case the assertion fails
-//            String msg = e.getMessage().replace('<',' ').replace('>',' ');
-//            System.out.println("Assertion error: " + msg);
-//            test.log(Status.FAIL, "Test Failed - Assertion failed: "+msg );
-//        }
-
-
     }
 
     @Test // TC-39

@@ -28,6 +28,8 @@ import org.testng.asserts.SoftAssert;
 
 public class Base {
 
+    protected static int i;
+
     //Attributes
     HomePage homePage;
     WhyUsPage whyUsPage;
@@ -46,8 +48,10 @@ public class Base {
     SoftAssert softAssert;
 
     public static WebDriver driver;
-    static String configPath = "C:\\Users\\Admin\\IdeaProjects\\agricultural_insurance\\src\\testData\\config.xml";
+//    static String configPath = "C:\\Users\\m\\IdeaProjects\\agricultural_insurance\\src\\testData\\config.xml";
+    static String configPath = "src\\testData\\config.xml";
     static String url1;
+    static String browserName;
 
     public static String takeScreenShot() {
         try {
@@ -75,7 +79,7 @@ public class Base {
         url1 = readFromFile("url1" ,configPath);
 
 //        Set up WebDriver
-        String browserName = readFromFile("browser" ,configPath);
+        browserName = readFromFile("browser" ,configPath);
         System.out.println("BROWSER NAME: " +browserName);
         if (browserName.equals("chrome"))
            driver = new ChromeDriver();
@@ -83,9 +87,16 @@ public class Base {
            driver = new FirefoxDriver();
         driver.manage().window().maximize();
     }
+//
 
-    @BeforeTest
+//    @BeforeTest
+    @BeforeMethod
     public void initializing() throws InterruptedException{
+        if (browserName.equals("chrome"))
+            driver = new ChromeDriver();
+        else if (browserName.equals("firefox"))
+            driver = new FirefoxDriver();
+        driver.manage().window().maximize();
         homePage = new HomePage(driver);
         whyUsPage = new WhyUsPage(driver);
         isFirstTimePage = new IsFirstTimePage(driver);
@@ -107,13 +118,28 @@ public class Base {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
+
+//    @BeforeMethod
+//    public void befor_method() {
+//        driver.get(url1);
+//    }
     @AfterMethod
-    public void after_test() {
+    public void after_method() {
         if (driver != null) {
             takeScreenShot();
         }
+        i++;
+        System.out.println("after mehtod: " + i);
+        driver.quit();
+//        driver.switchTo().newWindow(WindowType.WINDOW);
     }
 
+    @AfterTest
+    public void after_test() {
+        i++;
+        System.out.println("ID: " + i);
+
+    }
 
 //     static String readFromFile(String keyData, String pathName) throws ParserConfigurationException, IOException, SAXException {
     public static String readFromFile(String keyData, String pathName) throws ParserConfigurationException, IOException, SAXException {
