@@ -23,6 +23,7 @@ public class CoversPage extends BasePage{
     By computer_model = By.id("pcOrTabletAddCover_pcOrTabletTypeOfCover_0");
     By continue_btn = By.cssSelector(".jyxUhb");
     By close_pop = By.id("xButton");
+    By insurance_price = By.className("finalPriceValue");
     //Constructor
     public CoversPage(WebDriver driver) {
         super(driver);
@@ -45,7 +46,12 @@ public class CoversPage extends BasePage{
         return this;
     }
 
+    public boolean is_continue_button_exist(){
+        return checkIfElementExist(continue_btn);
+    }
 
-
+    public String get_insurance_price(){
+        return getText(insurance_price);
+    }
 
 }

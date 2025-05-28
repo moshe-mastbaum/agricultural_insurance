@@ -29,7 +29,8 @@ import org.testng.asserts.SoftAssert;
 public class Base {
 
     protected static int i;
-
+    String blue = "#1f2f66";
+    String green = "#60bb70";
     //Attributes
     HomePage homePage;
     WhyUsPage whyUsPage;
@@ -46,9 +47,12 @@ public class Base {
     InsuranceCheckPage insuranceCheckPage;
     ContactUsPage contactUsPage;
     SoftAssert softAssert;
+    HappySeeUAginPage happySeeUAginPage;
+    CannotContinuePage cannotContinuePage;
+    StepsErea stepsErea;
+    SummaryPage summaryPage;
 
     public static WebDriver driver;
-//    static String configPath = "C:\\Users\\m\\IdeaProjects\\agricultural_insurance\\src\\testData\\config.xml";
     static String configPath = "src\\testData\\config.xml";
     static String url1;
     static String browserName;
@@ -87,9 +91,7 @@ public class Base {
            driver = new FirefoxDriver();
         driver.manage().window().maximize();
     }
-//
 
-//    @BeforeTest
     @BeforeMethod
     public void initializing() throws InterruptedException{
         if (browserName.equals("chrome"))
@@ -111,6 +113,10 @@ public class Base {
         findDocumentsPage = new FindDocumentsPage(driver);
         insuranceCheckPage = new InsuranceCheckPage(driver);
         contactUsPage = new ContactUsPage(driver);
+        happySeeUAginPage = new HappySeeUAginPage(driver);
+        cannotContinuePage = new CannotContinuePage(driver);
+        stepsErea = new StepsErea(driver);
+        summaryPage = new SummaryPage(driver);
 
         softAssert = new SoftAssert();
 
@@ -119,27 +125,14 @@ public class Base {
     }
 
 
-//    @BeforeMethod
-//    public void befor_method() {
-//        driver.get(url1);
-//    }
     @AfterMethod
     public void after_method() {
         if (driver != null) {
             takeScreenShot();
         }
-        i++;
-        System.out.println("after mehtod: " + i);
         driver.quit();
-//        driver.switchTo().newWindow(WindowType.WINDOW);
     }
 
-    @AfterTest
-    public void after_test() {
-        i++;
-        System.out.println("ID: " + i);
-
-    }
 
 //     static String readFromFile(String keyData, String pathName) throws ParserConfigurationException, IOException, SAXException {
     public static String readFromFile(String keyData, String pathName) throws ParserConfigurationException, IOException, SAXException {

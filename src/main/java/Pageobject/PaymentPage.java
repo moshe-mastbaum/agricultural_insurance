@@ -8,27 +8,21 @@ public class PaymentPage extends BasePage{
     static WebDriver driver;
 
     //Attributes (elements)
+    By card_number_input = By.id("card-number");
 
-//    By purchase = By.id("abroadplus");
-//    By insurances_title = By.cssSelector(".insurances-title");
-//    By fast_actions_title = By.cssSelector(".titleline--left");
-//    By is_car_insurence = By.partialLinkText("האם הרכב מבוטח");
-//    By find_documents = By.partialLinkText("חיפוש מסמכים");
-//    By find_contact_us = By.partialLinkText("צור קשר");
-
-    By no_btn = By.id("לא");
-    By continue_btn = By.cssSelector(".jyxUhb");
+    By frame1 = By.id("payerCityName");
+    By CityName = By.id("payerCityName");
 
     public PaymentPage(WebDriver driver) {
         super(driver);
     }
 
-    public PaymentPage to_continue(){
-        click(continue_btn);
-        return this;
+    public boolean is_enter_card_number_exist(){
+        waitVisibility(CityName);
+        scroll(CityName);
+        waitVisibility(frame1);
+        switchFtame("creditFrame");
+        return checkIfElementExist(card_number_input);
+
     }
-
-
-
-
 }

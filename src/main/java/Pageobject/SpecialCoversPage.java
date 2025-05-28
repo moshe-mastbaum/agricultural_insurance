@@ -9,7 +9,7 @@ public class SpecialCoversPage extends BasePage{
 
     //Attributes (elements)
 
-//    By purchase = By.id("abroadplus");
+    By ExtremeSports = By.id("ExtremeSports_Accordion");
 //    By insurances_title = By.cssSelector(".insurances-title");
 //    By fast_actions_title = By.cssSelector(".titleline--left");
 //    By is_car_insurence = By.partialLinkText("האם הרכב מבוטח");
@@ -26,6 +26,10 @@ public class SpecialCoversPage extends BasePage{
     public SpecialCoversPage to_continue(){
         click(continue_btn);
         return this;
+    }
+
+    public boolean check_ExtremeSports_exsit(){
+        return checkIfElementExist(ExtremeSports);
     }
 
 

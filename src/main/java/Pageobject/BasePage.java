@@ -1,5 +1,6 @@
 package Pageobject;
 
+//import jdk.internal.org.jline.terminal.TerminalBuilder;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
@@ -59,6 +60,11 @@ public class BasePage {
     public void click(By elementLocation){
         waitVisibility(elementLocation);
         wait.until(ExpectedConditions.elementToBeClickable(elementLocation));
+        driver.findElement(elementLocation).click();
+    }
+
+    //Clicking  element immediately
+    public void clickIm(By elementLocation){
         driver.findElement(elementLocation).click();
     }
 
@@ -144,6 +150,7 @@ public class BasePage {
 
     //Checks whether the element exists on the page
     public boolean checkIfElementExist(By elementLocation){
+        waitVisibility(elementLocation);
         try {
             driver.findElement(elementLocation);
             return true;
@@ -159,9 +166,26 @@ public class BasePage {
         return Color.fromString(color).asHex();
     }
 
+    //Color of element from list of elements
+    public String elementIColor(By elementLocation,int i){
+        waitVisibility(elementLocation);
+        List<WebElement> allOptions= driver.findElements(elementLocation);
+        WebElement element = allOptions.get(i);
+        System.out.println("step elem HTML: " + element.getAttribute("outerHTML"));
+        String color= element.getCssValue("background-color");
+        System.out.println("color is: " + color);
+        return Color.fromString(color).asHex();
+    }
+
     //Get text from the element
     public String getText(By elementLocation){
+        waitVisibility(elementLocation);
         return driver.findElement(elementLocation).getText();
+    }
+
+    //Switch to fame
+    public void switchFtame(String frameId){
+        driver.switchTo().frame(frameId);
     }
 
 }

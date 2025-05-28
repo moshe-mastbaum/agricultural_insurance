@@ -29,6 +29,11 @@ public class IsFromIsraelPage extends BasePage{
         click(no_btn);
         return this;
     }
+
+    public boolean is_click_yes_exist(){
+        return  checkIfElementExist(yes_btn);
+    }
+
     public IsFromIsraelPage click_yes(){
         click(yes_btn);
         return this;

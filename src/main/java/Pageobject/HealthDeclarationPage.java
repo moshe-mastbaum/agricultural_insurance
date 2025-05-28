@@ -29,6 +29,10 @@ public class HealthDeclarationPage extends BasePage{
         return this;
     }
 
+    public boolean no_health_problems_button_exist(){
+        return checkIfElementExist(no_btn);
+    }
+
 
 
 
