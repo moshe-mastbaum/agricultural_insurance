@@ -130,7 +130,7 @@ public class Base {
         if (driver != null) {
             takeScreenShot();
         }
-        driver.quit();
+//        driver.quit();
     }
 
 

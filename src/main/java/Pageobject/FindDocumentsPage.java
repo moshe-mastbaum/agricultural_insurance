@@ -23,13 +23,15 @@ public class FindDocumentsPage extends BasePage{
     By subject_kinds = By.cssSelector("#secondary > option");
     By search_btn = By.cssSelector("button[type='submit']");
     By clear_btn = By.cssSelector("button[type='reset']");
+    By results = By.cssSelector(".table__text");
+
     //Constructor
     public FindDocumentsPage(WebDriver driver) {
         super(driver);
     }
 
     public FindDocumentsPage find_open_text(){
-        writeText(opentext,"ים תיכון");
+        writeText(opentext,"בקשה");
         click(search_btn);
         return this;
     }
@@ -40,6 +42,10 @@ public class FindDocumentsPage extends BasePage{
         click(search_btn);
         click(clear_btn);
         return this;
+    }
+
+    public boolean check_result(){
+        return isVisible(results);
     }
 
 

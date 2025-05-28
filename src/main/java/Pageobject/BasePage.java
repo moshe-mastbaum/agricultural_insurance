@@ -98,11 +98,15 @@ public class BasePage {
         return driver.findElement(elementLocation).isSelected();
     }
 
+    //Check if the element is visible
+    public boolean isVisible(By elementLocation){
+        return driver.findElement(elementLocation).isDisplayed();
+    }
+
     //Choose from list
     public void chooseFromList(By elementLocation,By options, String text){
         waitVisibility(elementLocation);
         driver.findElement(elementLocation).click();
-//        waitVisibility(options);
         List<WebElement> list= driver.findElements(options);
         for (WebElement choose : list){
             if (choose.getText().equals(text))

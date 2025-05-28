@@ -24,7 +24,8 @@ public class ContactUsPage extends BasePage{
     By subject_options = By.cssSelector("#subject > option");
     By message = By.id("message");
     By submit_btn = By.cssSelector("input[type='submit']");
-
+    By eror_message = By.id("error-message");
+    By thanks_message = By.cssSelector("h1");
 
 
     //Constructor
@@ -48,6 +49,18 @@ public class ContactUsPage extends BasePage{
         return this;
     }
 
+    public boolean full_name_exist(){
+        return checkIfElementExist(full_name);
+    }
+
+    public boolean eror_message_exist(){
+        return checkIfElementExist(eror_message);
+    }
+
+    public String get_thanks_message(){
+        waitVisibility(thanks_message);
+        return getText(thanks_message);
+    }
 
 
 
