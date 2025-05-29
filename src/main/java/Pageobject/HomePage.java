@@ -10,16 +10,15 @@ public class HomePage extends BasePage{
 
     static WebDriver driver;
 
-    //Attributes (elements) titleline--left sc-papXJ menu-item-6129
-
+    //Attributes (elements)
     By purchase = By.id("abroadplus");
     By insurances_title = By.cssSelector(".insurances-title");
     By fast_actions_title = By.cssSelector(".titleline--left");
     By is_car_insurence = By.partialLinkText("האם הרכב מבוטח");
     By find_documents = By.partialLinkText("חיפוש מסמכים");
-//    By find_contact_us = By.partialLinkText("צור קשר");
     By find_contact_us = By.id("menu-item-6129");
     By to_continue = By.cssSelector(".sc-papXJ");
+
     //Constructor
     public HomePage(WebDriver driver) {
         super(driver);
@@ -51,6 +50,5 @@ public class HomePage extends BasePage{
         click(find_contact_us);
         return this;
     }
-
 
 }

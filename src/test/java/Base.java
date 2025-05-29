@@ -1,17 +1,12 @@
 import Pageobject.*;
 import io.qameta.allure.Allure;
-import io.qameta.allure.Attachment;
-import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.*;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -124,17 +119,14 @@ public class Base {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-
     @AfterMethod
     public void after_method() {
         if (driver != null) {
             takeScreenShot();
         }
-//        driver.quit();
+        driver.quit();
     }
 
-
-//     static String readFromFile(String keyData, String pathName) throws ParserConfigurationException, IOException, SAXException {
     public static String readFromFile(String keyData, String pathName) throws ParserConfigurationException, IOException, SAXException {
         String value = null;
         try {
@@ -156,6 +148,5 @@ public class Base {
 
         return value;
     }
-
 
 }

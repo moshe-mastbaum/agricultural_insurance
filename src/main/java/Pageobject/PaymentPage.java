@@ -9,7 +9,6 @@ public class PaymentPage extends BasePage{
 
     //Attributes (elements)
     By card_number_input = By.id("card-number");
-
     By frame1 = By.id("payerCityName");
     By CityName = By.id("payerCityName");
 

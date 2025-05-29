@@ -8,7 +8,6 @@ public class HappySeeUAginPage extends BasePage{
     static WebDriver driver;
 
     //Attributes (elements)
-
     By id_input = By.id("id");
 
     //Constructor

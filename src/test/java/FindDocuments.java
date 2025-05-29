@@ -22,7 +22,7 @@ public class FindDocuments extends Base {
         homePage.to_find_documents();
         findDocumentsPage.find_by_choos();
         Allure.step("Assertion cleaning", () -> {
-            softAssert.assertTrue(!findDocumentsPage.check_result(), "result is steel present");
+            softAssert.assertTrue(!findDocumentsPage.check_result(),"result is steel present" );
         });
         softAssert.assertAll();
     }

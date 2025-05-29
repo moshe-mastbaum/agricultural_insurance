@@ -8,14 +8,6 @@ public class FindDocumentsPage extends BasePage{
     static WebDriver driver;
 
     //Attributes (elements)
-
-//    By purchase = By.id("abroadplus");
-//    By insurances_title = By.cssSelector(".insurances-title");
-//    By fast_actions_title = By.cssSelector(".titleline--left");
-//    By is_car_insurence = By.partialLinkText("האם הרכב מבוטח");
-//    By find_documents = By.partialLinkText("חיפוש מסמכים");
-//    By find_contact_us = By.partialLinkText("צור קשר");
-
     By opentext = By.id("opentext");
     By all_subjects = By.id("primary");
     By subject_options = By.cssSelector("#primary > option");
@@ -47,8 +39,5 @@ public class FindDocumentsPage extends BasePage{
     public boolean check_result(){
         return isVisible(results);
     }
-
-
-
 
 }

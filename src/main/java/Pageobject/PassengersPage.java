@@ -42,7 +42,4 @@ public class PassengersPage extends BasePage{
         return this;
     }
 
-
-
-
 }

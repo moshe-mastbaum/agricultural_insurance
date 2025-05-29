@@ -8,22 +8,13 @@ public class CoversPage extends BasePage{
     static WebDriver driver;
 
     //Attributes (elements)
-
-//    By purchase = By.id("abroadplus");
-//    By insurances_title = By.cssSelector(".insurances-title");
-//    By fast_actions_title = By.cssSelector(".titleline--left");
-//    By is_car_insurence = By.partialLinkText("האם הרכב מבוטח");
-//    By find_documents = By.partialLinkText("חיפוש מסמכים");
-//    By find_contact_us = By.partialLinkText("צור קשר");
-
-
-//    By cover_titles = By.cssSelector(".extra");
     By cover_titles = By.id("accordion-top");
     By computer_box = By.cssSelector(".col-lg-12 > div > label");
     By computer_model = By.id("pcOrTabletAddCover_pcOrTabletTypeOfCover_0");
     By continue_btn = By.cssSelector(".jyxUhb");
     By close_pop = By.id("xButton");
     By insurance_price = By.className("finalPriceValue");
+
     //Constructor
     public CoversPage(WebDriver driver) {
         super(driver);

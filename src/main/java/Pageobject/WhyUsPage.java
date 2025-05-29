@@ -33,9 +33,4 @@ public class WhyUsPage extends BasePage{
         return checkIfElementExist(to_continue);
     }
 
-
-
-
-
-
 }

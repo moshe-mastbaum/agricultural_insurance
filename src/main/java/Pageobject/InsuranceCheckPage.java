@@ -13,6 +13,7 @@ public class InsuranceCheckPage extends BasePage{
     By search_btn = By.id("check-sub");
     By enter_date = By.cssSelector("td[data-handler='selectDay']");
     By message_search = By.cssSelector(".msg-form[style='display: block;']");
+
     //Constructor
     public InsuranceCheckPage(WebDriver driver) {
         super(driver);
@@ -29,10 +30,5 @@ public class InsuranceCheckPage extends BasePage{
     public String get_message_search (){
         return getText(message_search);
     }
-
-
-
-
-
 
 }

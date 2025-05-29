@@ -1,17 +1,17 @@
-import Pageobject.HappySeeUAginPage;
-import Pageobject.IsFirstTimePage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import io.qameta.allure.*;
-import io.qameta.allure.Step;
-import org.testng.Assert;
+
 //<div class="insurances-title">איזה פלוס אפשר להציע לך היום?</div>
 @Listeners({io.qameta.allure.testng.AllureTestNg.class})
 public class ProposalTest extends Base {
+
+    String firstTime = "לא, זאת הפעם הראשונה";
+    String fixedPrice = "מחיר הביטוח $27.2";
+    String summaryTitle = "סיכום ההצעה";
+    int thisStep = 0;
+    int previousStep = 1;
+    int previous2Step = 2;
 
     @Test (description = "Verify Continue button exists")// TC-38
     @Description("Open why us and verify Continue button exists")
@@ -29,7 +29,7 @@ public class ProposalTest extends Base {
         homePage.to_purchase();
         whyUsPage.lets_continue();
         Allure.step("Assertion Check Why Us text ", () -> {
-            softAssert.assertEquals(isFirstTimePage.get_first_time_text(), "לא, זאת הפעם הראשונה", "Mismatch: ");
+            softAssert.assertEquals(isFirstTimePage.get_first_time_text(), firstTime, "Mismatch: ");
         });
         softAssert.assertAll();
     }
@@ -79,7 +79,7 @@ public class ProposalTest extends Base {
         isFirstTimePage.click_first_time();
         isFromIsraelPage.click_yes();
         Allure.step("Assertion color step ", () -> {
-            softAssert.assertEquals(stepsErea.get_step_color(0), blue, "Mismatch color");
+            softAssert.assertEquals(stepsErea.get_step_color(thisStep), blue, "Mismatch color");
         });
         softAssert.assertAll();
     }
@@ -94,8 +94,8 @@ public class ProposalTest extends Base {
         whereToPage.click_to();
         whereToPage.to_continue();
 
-        String color0 = stepsErea.get_step_color(0);
-        String color1 = stepsErea.get_step_color(1);
+        String color0 = stepsErea.get_step_color(thisStep);
+        String color1 = stepsErea.get_step_color(previousStep);
 
         Allure.step("Assertion Check back home exists", () -> {
             softAssert.assertTrue(color1.equals(blue)&&color0.equals(green)  , "Mismatch color");
@@ -107,9 +107,9 @@ public class ProposalTest extends Base {
     @Description("verify color 3 steps")
     public void test45() throws InterruptedException{
         to_date_page();
-        String color0 = stepsErea.get_step_color(0);
-        String color1 = stepsErea.get_step_color(1);
-        String color2 = stepsErea.get_step_color(2);
+        String color0 = stepsErea.get_step_color(thisStep);
+        String color1 = stepsErea.get_step_color(previousStep);
+        String color2 = stepsErea.get_step_color(previous2Step);
         Allure.step("Assertion Check back home exists", () -> {
             softAssert.assertTrue(color2.equals(blue)&&color1.equals(green)&&color0.equals(green)  , "Mismatch color");
         });
@@ -136,7 +136,7 @@ public class ProposalTest extends Base {
         passengersPage.to_continue();
         coversPage.fill_luggage();
         Allure.step("Assertion color step ", () -> {
-            softAssert.assertEquals(coversPage.get_insurance_price(), "מחיר הביטוח $27.2", "Mismatch color");
+            softAssert.assertEquals(coversPage.get_insurance_price(), fixedPrice, "Mismatch color");
         });
         softAssert.assertAll();
     }
@@ -169,7 +169,7 @@ public class ProposalTest extends Base {
         specialCoversPage.to_continue();
         healthDeclarationPage.to_continue();
         Allure.step("Assertion color step ", () -> {
-            softAssert.assertEquals(summaryPage.get_title(), "סיכום ההצעה", "Mismatch color");
+            softAssert.assertEquals(summaryPage.get_title(),summaryTitle, "Mismatch color");
         });
         softAssert.assertAll();
     }
@@ -210,7 +210,5 @@ public class ProposalTest extends Base {
         coversPage.fill_luggage();
         coversPage.to_continue();
     }
-
-
 
 }
