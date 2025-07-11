@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 
 public class DatePage extends BasePage{
 
+    String start = "02/09/2025";
+    String end = "08/09/2025";
     static WebDriver driver;
 
     //Attributes (elements)
@@ -17,12 +19,12 @@ public class DatePage extends BasePage{
         super(driver);
     }
 
-    public DatePage enter_start(){
-        enterDate(start_date,"02/06/2025");
+    public DatePage enter_start_date(){
+        enterDate(start_date,start);
         return this;
     }
-    public DatePage enter_end(){
-        enterDate(end_date,"09/06/2025");
+    public DatePage enter_end_date(){
+        enterDate(end_date,end);
         return this;
     }
 

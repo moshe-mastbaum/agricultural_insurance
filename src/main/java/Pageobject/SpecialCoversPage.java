@@ -17,7 +17,7 @@ public class SpecialCoversPage extends BasePage{
         super(driver);
     }
 
-    public SpecialCoversPage to_continue(){
+    public SpecialCoversPage click_continue_btn(){
         click(continue_btn);
         return this;
     }
@@ -25,8 +25,5 @@ public class SpecialCoversPage extends BasePage{
     public boolean check_ExtremeSports_exsit(){
         return checkIfElementExist(ExtremeSports);
     }
-
-
-
 
 }

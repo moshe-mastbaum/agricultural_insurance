@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
-import java.util.Set;
 
 public class HomePage extends BasePage{
 
@@ -24,7 +23,7 @@ public class HomePage extends BasePage{
         super(driver);
     }
 
-    public HomePage to_purchase(){
+    public HomePage click_purchase_btn(){
         scroll(insurances_title);
         click(purchase);
         List<String> WindowHandles = get_window_handles();

@@ -16,7 +16,7 @@ public class IsFirstTimePage extends BasePage{
         super(driver);
     }
 
-    public IsFirstTimePage click_first_time(){
+    public IsFirstTimePage click_first_time_btn(){
         click(first_time_btn);
         return this;
     }

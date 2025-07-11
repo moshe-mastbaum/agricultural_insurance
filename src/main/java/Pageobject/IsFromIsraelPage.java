@@ -16,7 +16,7 @@ public class IsFromIsraelPage extends BasePage{
         super(driver);
     }
 
-    public IsFromIsraelPage click_no(){
+    public IsFromIsraelPage click_no_btn(){
         click(no_btn);
         return this;
     }

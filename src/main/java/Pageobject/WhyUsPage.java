@@ -3,8 +3,6 @@ package Pageobject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.util.List;
-
 public class WhyUsPage extends BasePage{
 
     static WebDriver driver;
@@ -19,7 +17,7 @@ public class WhyUsPage extends BasePage{
         super(driver);
     }
 
-    public WhyUsPage lets_continue(){
+    public WhyUsPage click_lets_continue_btn(){
         click(cookies_btn);
         click(to_continue);
         return this;

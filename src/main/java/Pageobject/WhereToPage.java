@@ -16,12 +16,11 @@ public class WhereToPage extends BasePage{
         super(driver);
     }
 
-    public WhereToPage click_to(){
+    public WhereToPage click_destintion_box(){
         click_i_FromList(to_destintion,2);
-//        selectRandomlyFromList(to_destintion);
         return this;
     }
-    public WhereToPage to_continue(){
+    public WhereToPage click_continue_btn(){
         click(continue_btn);
         return this;
     }

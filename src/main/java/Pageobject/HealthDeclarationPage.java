@@ -15,7 +15,7 @@ public class HealthDeclarationPage extends BasePage{
         super(driver);
     }
 
-    public HealthDeclarationPage to_continue(){
+    public HealthDeclarationPage click_continue_btn(){
         click(no_btn);
         click(continue_btn);
         return this;

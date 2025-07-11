@@ -37,7 +37,7 @@ public class PassengersPage extends BasePage{
         return this;
     }
 
-    public PassengersPage to_continue(){
+    public PassengersPage click_continue_btn(){
         click(continue_btn);
         return this;
     }
