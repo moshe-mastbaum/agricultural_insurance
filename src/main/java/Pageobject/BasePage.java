@@ -25,7 +25,6 @@ public class BasePage {
         this.driver= driver;
         wait= new WebDriverWait(driver, Duration.ofSeconds(20));
         actions = new Actions(driver);
-
     }
 
     //Functions
@@ -44,6 +43,7 @@ public class BasePage {
     public String get_url(){
         return driver.getCurrentUrl();
     }
+
     public List<String> get_window_handles(){
         Set<String> allHandles = driver.getWindowHandles();
         List<String> handleList = new ArrayList<>(allHandles);
@@ -128,7 +128,6 @@ public class BasePage {
     public void click_i_FromList(By elementLocation, int i){
         waitVisibility(elementLocation);
         List<WebElement> allOptions= driver.findElements(elementLocation);
-        System.out.println("Found " + allOptions.size() + " child divs.");
         allOptions.get(i).click();
     }
 
@@ -136,7 +135,6 @@ public class BasePage {
     public void selectRandomlyFromList(By elementLocation){
         waitVisibility(elementLocation);
         List<WebElement> allOptions= driver.findElements(elementLocation);
-        System.out.println("Found " + allOptions.size() + " child divs.");
         Random rand = new Random();
         int randomProduct = rand.nextInt(allOptions.size());
         allOptions.get(randomProduct).click();
@@ -146,7 +144,6 @@ public class BasePage {
     public void elementSize(By elementLocation){
         WebElement load= driver.findElement(elementLocation);
         Dimension dimension= load.getSize();
-        System.out.println(dimension);
     }
 
     //Checks whether the element exists on the page
@@ -172,9 +169,7 @@ public class BasePage {
         waitVisibility(elementLocation);
         List<WebElement> allOptions= driver.findElements(elementLocation);
         WebElement element = allOptions.get(i);
-        System.out.println("step elem HTML: " + element.getAttribute("outerHTML"));
         String color= element.getCssValue("background-color");
-        System.out.println("color is: " + color);
         return Color.fromString(color).asHex();
     }
 

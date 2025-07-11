@@ -1,13 +1,12 @@
+package tests;
+
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
-//<div class="insurances-title">איזה פלוס אפשר להציע לך היום?</div>
 public class ContactUs extends Base {
 
     String thanksText = "תודה";
-
 
     @Test (description = "Verify  full name exists")// TC-94
     @Description("verify  full name exists")

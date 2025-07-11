@@ -1,8 +1,9 @@
+package tests;
+
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
-//<div class="insurances-title">איזה פלוס אפשר להציע לך היום?</div>
 public class FindDocuments extends Base {
 
     @Test (description = "Verify  open search") //tc-58

@@ -1,3 +1,7 @@
+package tests;
+
+import flows.ProposalFlows;
+
 import Pageobject.*;
 import io.qameta.allure.Allure;
 import org.openqa.selenium.*;
@@ -27,20 +31,21 @@ public class Base {
     String blue = "#1f2f66";
     String green = "#60bb70";
     //Attributes
-    HomePage homePage;
-    WhyUsPage whyUsPage;
-    IsFirstTimePage isFirstTimePage;
-    IsFromIsraelPage isFromIsraelPage;
-    WhereToPage whereToPage;
-    DatePage datePage;
-    PassengersPage passengersPage;
-    CoversPage coversPage;
-    SpecialCoversPage specialCoversPage;
-    HealthDeclarationPage healthDeclarationPage;
-    PaymentPage paymentPage;
-    FindDocumentsPage findDocumentsPage;
-    InsuranceCheckPage insuranceCheckPage;
-    ContactUsPage contactUsPage;
+    public HomePage homePage;
+    public WhyUsPage whyUsPage;
+    public IsFirstTimePage isFirstTimePage;
+    public IsFromIsraelPage isFromIsraelPage;
+    public WhereToPage whereToPage;
+    public DatePage datePage;
+    public PassengersPage passengersPage;
+    public CoversPage coversPage;
+    public SpecialCoversPage specialCoversPage;
+    public HealthDeclarationPage healthDeclarationPage;
+    public PaymentPage paymentPage;
+    public FindDocumentsPage findDocumentsPage;
+    public InsuranceCheckPage insuranceCheckPage;
+    public ContactUsPage contactUsPage;
+    public ProposalFlows proposalFlows;
     SoftAssert softAssert;
     HappySeeUAginPage happySeeUAginPage;
     CannotContinuePage cannotContinuePage;
@@ -113,6 +118,18 @@ public class Base {
         stepsErea = new StepsErea(driver);
         summaryPage = new SummaryPage(driver);
 
+//        proposalFlows = new ProposalFlows();
+        proposalFlows = new ProposalFlows(
+                driver,
+                homePage,
+                whyUsPage,
+                isFirstTimePage,
+                isFromIsraelPage,
+                whereToPage,
+                datePage,
+                passengersPage,
+                coversPage
+        );
         softAssert = new SoftAssert();
 
         driver.get(url1);

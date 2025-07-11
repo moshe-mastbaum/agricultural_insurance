@@ -1,3 +1,5 @@
+package tests;
+
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
@@ -8,7 +10,6 @@ public class IsCarInsurence  extends Base{
     String goodLicenseNumber = "23652125";
     String found = "בתאריך 01/05/2025 נמצא ביטוח תקף לרכב שמספרו 23652125 בביטוח חקלאי";
     String notFound = "לא נמצא ביטוח בתוקף עבור הנתונים שהוזנו";
-
 
     @Test (description = "Verify  not found message") //TC-54
     @Description("verify not found message")
