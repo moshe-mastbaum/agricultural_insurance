@@ -84,7 +84,6 @@ public class Base {
 
 //        Set up WebDriver
         browserName = readFromFile("browser" ,configPath);
-        System.out.println("BROWSER NAME: " +browserName);
         if (browserName.equals("chrome"))
            driver = new ChromeDriver();
         else if (browserName.equals("firefox"))
@@ -118,18 +117,7 @@ public class Base {
         stepsErea = new StepsErea(driver);
         summaryPage = new SummaryPage(driver);
 
-//        proposalFlows = new ProposalFlows();
-        proposalFlows = new ProposalFlows(
-                driver,
-                homePage,
-                whyUsPage,
-                isFirstTimePage,
-                isFromIsraelPage,
-                whereToPage,
-                datePage,
-                passengersPage,
-                coversPage
-        );
+        proposalFlows = new ProposalFlows();
         softAssert = new SoftAssert();
 
         driver.get(url1);

@@ -109,7 +109,7 @@ public class ProposalTest extends Base {
     @Test (description = "verify color 3 steps") // TC-45
     @Description("verify color 3 steps")
     public void test45() throws InterruptedException{
-        proposalFlows.from_start_to_passengers_page();
+        proposalFlows.from_start_to_passengers_page(this);
         String color0 = stepsErea.get_step_color(thisStep);
         String color1 = stepsErea.get_step_color(previousStep);
         String color2 = stepsErea.get_step_color(previous2Step);
@@ -122,7 +122,7 @@ public class ProposalTest extends Base {
     @Test (description = "verify continue button exist") // TC-46
     @Description("verify continue button exist")
     public void test46() throws InterruptedException{
-        proposalFlows.from_start_to_passengers_page();
+        proposalFlows.from_start_to_passengers_page(this);
         passengersPage.fill_details();
         passengersPage.click_continue_btn();
         Allure.step("Assertion continue button exist", () -> {
@@ -134,7 +134,7 @@ public class ProposalTest extends Base {
     @Test (description = "verify insurance price update") // TC-47 covers
     @Description("verify insurance price update")
     public void test47() throws InterruptedException{
-        proposalFlows.from_start_to_passengers_page();
+        proposalFlows.from_start_to_passengers_page(this);
         passengersPage.fill_details();
         passengersPage.click_continue_btn();
         coversPage.fill_luggage();
@@ -147,7 +147,7 @@ public class ProposalTest extends Base {
     @Test (description = "verify extreme sports exist") // TC-48
     @Description("verify extreme sports exist")
     public void test48() throws InterruptedException{
-        proposalFlows.from_start_to_special_covers_page();
+        proposalFlows.from_start_to_special_covers_page(this);
         Allure.step("Assertion extreme sports exist", () -> {
             softAssert.assertTrue(specialCoversPage.check_ExtremeSports_exsit(), "extreme sports not present");
         });
@@ -157,7 +157,7 @@ public class ProposalTest extends Base {
     @Test (description = "verify no health problems button exist") // TC-49
     @Description("verify no health problems button exist")
     public void test49() throws InterruptedException{
-        proposalFlows.from_start_to_special_covers_page();
+        proposalFlows.from_start_to_special_covers_page(this);
         specialCoversPage.click_continue_btn();
         Allure.step("Assertion no health problems button exist", () -> {
             softAssert.assertTrue(healthDeclarationPage.no_health_problems_button_exist(), "no health problems button not present");
@@ -168,7 +168,7 @@ public class ProposalTest extends Base {
     @Test (description = "verify summary title") // TC-50
     @Description("verify summary title")
     public void test50() throws InterruptedException{
-        proposalFlows.from_start_to_special_covers_page();
+        proposalFlows.from_start_to_special_covers_page(this);
         specialCoversPage.click_continue_btn();
         healthDeclarationPage.click_continue_btn();
         Allure.step("Assertion color step ", () -> {
@@ -180,7 +180,7 @@ public class ProposalTest extends Base {
     @Test (description = "verify enter card number exist") // TC-51
     @Description("verify enter card number exist")
     public void test51() throws InterruptedException{
-        proposalFlows.from_start_to_special_covers_page();
+        proposalFlows.from_start_to_special_covers_page(this);
         specialCoversPage.click_continue_btn();
         healthDeclarationPage.click_continue_btn();
         passengersPage.click_continue_btn();
